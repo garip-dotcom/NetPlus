@@ -1,0 +1,117 @@
+print("=" * 40)
+print("       LGS PUAN HESAPLAMA")
+print("=" * 40)
+
+# Türkçe
+turkce_d = int(input("Türkçe Doğru: "))
+turkce_y = int(input("Türkçe Yanlış: "))
+
+# Matematik
+mat_d = int(input("Matematik Doğru: "))
+mat_y = int(input("Matematik Yanlış: "))
+
+# Fen
+fen_d = int(input("Fen Doğru: "))
+fen_y = int(input("Fen Yanlış: "))
+
+# İnkılap
+ink_d = int(input("İnkılap Tarihi Doğru: "))
+ink_y = int(input("İnkılap Tarihi Yanlış: "))
+
+# Din
+din_d = int(input("Din Kültürü Doğru: "))
+din_y = int(input("Din Kültürü Yanlış: "))
+
+# İngilizce
+ing_d = int(input("İngilizce Doğru: "))
+ing_y = int(input("İngilizce Yanlış: "))
+
+# Net hesaplama
+turkce_net = turkce_d - (turkce_y / 3)
+mat_net = mat_d - (mat_y / 3)
+fen_net = fen_d - (fen_y / 3)
+ink_net = ink_d - (ink_y / 3)
+din_net = din_d - (din_y / 3)
+ing_net = ing_d - (ing_y / 3)
+
+# Toplam net
+toplam_net = (
+    turkce_net +
+    mat_net +
+    fen_net +
+    ink_net +
+    din_net +
+    ing_net
+)
+
+# Tahmini puan (basit model)
+puan = 193 + (toplam_net * 5.12)
+
+# Puan üst sınırı
+if puan > 500:
+    puan = 500
+
+print("\n" + "=" * 40)
+print("SONUÇLAR")
+print("=" * 40)
+
+print(f"Türkçe Neti      : {turkce_net:.2f}")
+print(f"Matematik Neti   : {mat_net:.2f}")
+print(f"Fen Neti         : {fen_net:.2f}")
+print(f"İnkılap Neti     : {ink_net:.2f}")
+print(f"Din Neti         : {din_net:.2f}")
+print(f"İngilizce Neti   : {ing_net:.2f}")
+
+print("-" * 40)
+print(f"Toplam Net       : {toplam_net:.2f}")
+print(f"Tahmini LGS Puanı: {puan:.2f}")
+
+# Basit yüzdelik tahmini
+if puan >= 475:
+    dilim = "%0,5 - %1"
+elif puan >= 450:
+    dilim = "%1 - %3"
+elif puan >= 425:
+    dilim = "%3 - %5"
+elif puan >= 400:
+    dilim = "%5 - %10"
+elif puan >= 350:
+    dilim = "%10 - %20"
+else:
+    dilim = "%20+"
+
+print(f"Tahmini Dilim    : {dilim}")
+print("=" * 40)
+# Yüzdelik dilim tahmini
+if puan == 500:
+    yuzdelık = 0.01
+elif puan <= 490:
+    yuzdelik = 0.20
+elif puan <= 480:
+    yuzdelik = 0.80
+elif puan <= 470:
+    yuzdelik = 1.60
+elif puan <= 460:
+    yuzdelik = 2.50
+elif puan <= 450:
+    yuzdelik = 3.50
+elif puan <= 440:
+    yuzdelik = 4.80
+elif puan <= 430:
+    yuzdelik = 6.50
+elif puan <= 420:
+    yuzdelik = 8.50
+elif puan <= 410:
+    yuzdelik = 10.50
+elif puan <= 400:
+    yuzdelik = 13.00
+elif puan <= 390:
+    yuzdelik = 16.00
+elif puan <= 380:
+    yuzdelik = 20.00
+elif puan <= 370:
+    yuzdelik = 25.00
+elif puan <= 360:
+    yuzdelik = 30.00
+    
+print(f"Tahmini Yüzdelik Dilim: %{yuzdelik:.2f}")
